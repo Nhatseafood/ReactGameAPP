@@ -1,29 +1,29 @@
 import {createAsyncActionCreator} from '../common/redux.helpers';
-import * as movieService from './movie-browser.service';
+import * as gameService from './game-browser.service';
 
 export const keys = {
-  'GET_TOP_MOVIES': 'GET_TOP_MOVIES',
-  'SEARCH_MOVIES': 'SEARCH_MOVIES',
-  'GET_MOVIE_DETAILS': 'GET_MOVIE_DETAILS',
+  'GET_GAME_INFO': 'GET_GAME_INFO',
+  'SEARCH_GAMES': 'SEARCH_GAMES',
+  'GET_RATINGS': 'GET_RATINGS',
 };
 
-export const getTopMovies = (page) => createAsyncActionCreator(
+export const getGameInfo = (page) => createAsyncActionCreator(
   // actionType
-  keys.GET_TOP_MOVIES,
+  keys.GET_GAME_INFO,
   // requestFn
-  movieService.getTopMoviesRequest, 
+  gameService.getGameInfo, 
   // requestParams
   {page}
 );
 
-export const searchMovies = (query, page) => createAsyncActionCreator(
-  keys.SEARCH_MOVIES,
-  movieService.searchMovies, 
+export const searchGames = (query, page) => createAsyncActionCreator(
+  keys.SEARCH_GAMES,
+  gameService.searchGames, 
   {query, page}
 );
 
-export const getMovieDetails = (movieId) => createAsyncActionCreator(
-  keys.GET_MOVIE_DETAILS,
-  movieService.getMovieDetails, 
-  {movieId}
+export const getRatings = (page) => createAsyncActionCreator(
+  keys.GET_RATINGS,
+  gameService.getRatings, 
+  {page}
 );

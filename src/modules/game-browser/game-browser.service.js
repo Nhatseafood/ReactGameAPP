@@ -26,6 +26,8 @@ const createGameDbUrl = (relativeUrl, queryParams) => {
   }
   
   export const getRatings = async ({page}) => {
-    const fullUrl = createGameDbUrl(`/private/rates/`);
+    const fullUrl = createGameDbUrl(`/private/rates/`, {
+      page
+    });
     return fetch(fullUrl);
   }
