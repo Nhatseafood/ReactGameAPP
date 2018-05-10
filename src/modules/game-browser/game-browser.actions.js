@@ -5,6 +5,7 @@ export const keys = {
   'GET_GAME_INFO': 'GET_GAME_INFO',
   'SEARCH_GAMES': 'SEARCH_GAMES',
   'GET_RATINGS': 'GET_RATINGS',
+  'TOP_GAMES' : 'TOP_GAMES'
 };
 
 export const getGameInfo = (page) => createAsyncActionCreator(
@@ -25,5 +26,12 @@ export const searchGames = (query, page) => createAsyncActionCreator(
 export const getRatings = (page) => createAsyncActionCreator(
   keys.GET_RATINGS,
   gameService.getRatings, 
+  {page}
+);
+
+
+export const getTopGames = (page) => createAsyncActionCreator(
+  keys.TOP_GAMES,
+  gameService.getTopGames, 
   {page}
 );
