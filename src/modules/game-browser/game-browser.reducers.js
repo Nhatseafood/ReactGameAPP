@@ -1,9 +1,9 @@
 import {combineReducers} from 'redux';
 import { createReducer, createAsyncReducer} from '../common/redux.helpers';
 import { keys as gameActionKeys } from './game-browser.actions';
-// import movieModalReducer from './movie-modal/movie-modal.reducer';
-// hi
-// Placeholder reducer for our movie modal
+// import gameModalReducer from './game-modal/game-modal.reducer';
+// Placeholder reducer for our game modal
+
 const gameModalReducer = createReducer({ isOpen: false }, {
 
 });
@@ -28,11 +28,11 @@ const gamesSuccessReducer = (state, action) => {
   };
 }
 
-// Combines our movie browser related reducers to build our movieBrowser reducer
+// Combines our game browser related reducers to build our gameBrowser reducer
 const gameBrowserReducer = combineReducers({
     gameModal: gameModalReducer,
     gameInfo: createAsyncReducer(gameActionKeys.GET_GAME_INFO, {
-      [`${gameActionKeys.GET_TOP_MOVIES}_SUCCESS`]: gamesSuccessReducer
+      [`${gameActionKeys.GET_GAME_INFO}_SUCCESS`]: gamesSuccessReducer
     }),
     gameSearch: createAsyncReducer(gameActionKeys.SEARCH_GAMES, {
       [`${gameActionKeys.SEARCH_GAMES}_SUCCESS`]: gamesSuccessReducer
@@ -40,8 +40,9 @@ const gameBrowserReducer = combineReducers({
     gameRatings: createAsyncReducer(gameActionKeys.GET_RATINGS, {
       [`${gameActionKeys.GET_RATINGS}_SUCCESS`]: gamesSuccessReducer
     }),
-  
-  
+    gameMostPopular: createAsyncReducer(gameActionKeys.TOP_GAMES, {
+      [`${gameActionKeys.TOP_GAMES}_SUCCESS`]: gamesSuccessReducer
+    })
 });
 
 export default gameBrowserReducer;
